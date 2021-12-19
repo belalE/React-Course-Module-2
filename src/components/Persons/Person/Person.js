@@ -1,6 +1,6 @@
 import React from "react";
 
-import classes from "./Person.css";
+import classes from "./Person.module.css";
 // Instead of ejecting, I  can rename file to Person.module.css
 
 const person = (props) => {
