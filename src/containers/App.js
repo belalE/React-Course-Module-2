@@ -7,17 +7,45 @@ import Cockpit from "../components/Cockpit/Cockpit";
 
 
 class App extends Component {
-  state = {
-    persons: [
-      { id: "a1231232", name: "John", age: 27 },
-      { id: "b1232132", name: "Belal", age: 16 },
-      { id: "c2312312", name: "Hamza", age: 20 },
-      { id: "d1123123", name: "Moe", age: 9 },
-      { id: "e123123231", name: "Joe", age: 11 },
-    ],
-    otherState: "some other value",
-    showPersons: false,
-  };
+  constructor(props) {
+    super(props);
+    console.log('[App.js] constructor');
+    this.state = {
+      persons: [
+        { id: "a1231232", name: "John", age: 27 },
+        { id: "b1232132", name: "Belal", age: 16 },
+        { id: "c2312312", name: "Hamza", age: 20 },
+        { id: "d1123123", name: "Moe", age: 9 },
+        { id: "e123123231", name: "Joe", age: 11 },
+      ],
+      otherState: "some other value",
+      showPersons: false,
+    };
+  }
+
+  static getDerivedStateFromProps(props, state) {
+    console.log("[getDerivedStateFromProps.js]", props, state);
+    return state;
+  }
+
+  // componentWillMount() {
+  //   console.log('[App.js] componentWillMount')
+  // }
+
+  componentDidMount() {
+    console.log("[App.js] componentDidMount");
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log("[App.js] shouldComponentUpdate")
+    return true;
+
+  }
+
+  componentDidUpdate() {
+    console.log('[App.js] componentDidUpdate');
+  }
+  
 
   nameChangedHandler = (event, id) => {
     const personIndex = this.state.persons.findIndex((p) => {
@@ -48,6 +76,7 @@ class App extends Component {
   };
 
   render() {
+    console.log("[App.js] render")
     let persons = null;
 
     if (this.state.showPersons) {
@@ -65,7 +94,7 @@ class App extends Component {
 
     return (
       <div className={classes.App}>
-        <Cockpit showPersons={this.state.showPersons} persons={this.state.persons} clicked={this.togglePersonsHandler}/>
+        <Cockpit title={this.props.appTitle} showPersons={this.state.showPersons} persons={this.state.persons} clicked={this.togglePersonsHandler}/>
         {persons}
       </div>
     );
