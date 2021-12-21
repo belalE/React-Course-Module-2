@@ -7,13 +7,12 @@
   }
   
   .Cockpit button {
-    background-color: green;
-    color: white;
-    font: inherit;
     border: 1px solid blue;
-    padding: 8px;
+    padding: 16px;
+    background-color: green;
+    font: inherit;
+    color: white;
     cursor: pointer;
-    
   }
   
   .Cockpit button:hover {
@@ -27,4 +26,5 @@
   
   .Cockpit button.Red:hover {
     background-color: salmon;
+    color: black;
   }
